@@ -12,6 +12,7 @@ def create_user(db: Session, user: schema.UserCreate):
     except:
         db.rollback()
     finally:
+        db.refresh(db_user)
         db.close()
     return db_user
 
