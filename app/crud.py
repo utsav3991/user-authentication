@@ -1,9 +1,6 @@
-from fastapi.params import Depends
 from sqlalchemy.orm import Session
 
-
 from app import security, models, schema
-from app.dependency import get_db
 
 
 def create_user(db: Session, user: schema.UserCreate):
@@ -18,5 +15,3 @@ def create_user(db: Session, user: schema.UserCreate):
         db.close()
     return db_user
 
-
-# def get_current_user(db:Session=Depends(get_db), token=Depends())
