@@ -3,7 +3,7 @@ from fastapi.params import Depends
 from fastapi.security import OAuth2PasswordRequestForm
 from sqlalchemy.orm import Session
 
-from app import dependency, schema, checkers, security
+from app import dependency, schema, validators, security
 
 router = APIRouter()
 
@@ -12,7 +12,7 @@ router = APIRouter()
 def login_access_token(
         db: Session = Depends(dependency.get_db), form_data: OAuth2PasswordRequestForm = Depends()
 ):
-    user = checkers.authenticate_user(
+    user = validators.authenticate_user(
         db, email=form_data.username, password=form_data.password
     )
     if not user:
