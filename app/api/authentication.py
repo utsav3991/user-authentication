@@ -12,9 +12,6 @@ router = APIRouter()
 def login_access_token(
         db: Session = Depends(dependency.get_db), form_data: OAuth2PasswordRequestForm = Depends()
 ):
-    """
-    OAuth2 compatible token login, get an access token for future requests.
-    """
     user = checkers.authenticate_user(
         db, email=form_data.username, password=form_data.password
     )
