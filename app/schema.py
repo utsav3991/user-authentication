@@ -1,4 +1,6 @@
-from pydantic import BaseModel
+from typing import List
+
+from pydantic import BaseModel, EmailStr
 
 
 class UserBase(BaseModel):
@@ -22,3 +24,6 @@ class Token(BaseModel):
     access_token: str
     token_type: str
 
+
+class EmailSchema(BaseModel):
+    email: List[EmailStr]
